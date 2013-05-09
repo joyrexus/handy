@@ -19,15 +19,15 @@ Largely inspired by @syntagmatic's [leap-play](https://github.com/syntagmatic/le
 
 ## Projected pieces
 
-- [x] Recorder - record, view, and save samples.
+- `Recorder` - record, view, and save samples.
 
-- [x] Viewer - view saved samples in various formats.
+- `Viewer` - view saved samples in various formats.
 
-- [ ] Editor - crop saved samples by specifying start and stop points.
+- `Editor` - edit saved samples (e.g., crop by specifying start and stop points).
 
-- [ ] Gallery - view a collection of saved samples.
+- `Gallery` - view a collection of saved samples.
 
-- [ ] Storage - persist samples for viewing/editing.
+- `Storage` - persist samples for viewing/editing.
 
 See `record` and `view` for working prototypes of the first two.
 
