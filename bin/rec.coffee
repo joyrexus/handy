@@ -11,14 +11,14 @@ WebSocket = require 'ws'
 ws = new WebSocket 'ws://localhost:6437'
 fs = require 'fs'
 
-max = process.argv[2]
+max = parseInt process.argv[2]
 max ?= 100
 
 file = process.argv[3]
 out = if file then fs.createWriteStream(file) else process.stdout 
 
 print = console.log
-i = 0 
+i = 0   # samples seen
 
 ws.on 'open', -> 
   print ' leap socket opened' if file
@@ -37,11 +37,11 @@ ws.on 'error', (err) -> print err
 
 ws.on 'message', (d) -> 
   if i == 0
-    print " version #{JSON.parse(d).version}"
-    i += 1
-  else if max > (i += 1)
-    out.write "#{d},\n"
+    print " version #{JSON.parse(d).version}"   # do not include version info
+  else if max > i
+    out.write "#{d},\n"                         # include trailing comma
   else if max == i
-    out.write "#{d}\n"
+    out.write "#{d}\n"                          # exclude trailing comma
   else
     ws.close()
+  i += 1                                        # increment sample count

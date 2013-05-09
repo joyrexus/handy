@@ -5,7 +5,7 @@ Our nascent experiments with the [Leap](http://leapmotion.com).
 
 We're utilizing the device's websocket stream and [Javascript API](https://github.com/leapmotion/leapjs).
 
-Largely inspired by [@syntagmatic's](https://github.com/syntagmatic) [leap-play](https://github.com/syntagmatic/leap-play).
+Largely inspired by @syntagmatic's [leap-play](https://github.com/syntagmatic/leap-play).
 
 
 ## Resources
@@ -19,14 +19,16 @@ Largely inspired by [@syntagmatic's](https://github.com/syntagmatic) [leap-play]
 
 ## Projected pieces
 
-* Recorder - record, view, and save samples.
+- [x] Recorder - record, view, and save samples.
 
-* Viewer - view saved samples in various formats.
+- [x] Viewer - view saved samples in various formats.
 
-* Editor - crop saved samples by specifying start and stop points.
+- [ ] Editor - crop saved samples by specifying start and stop points.
 
-* Gallery - view a collection of saved samples.
+- [ ] Gallery - view a collection of saved samples.
 
-* Storage - store samples for viewing/editing.
+- [ ] Storage - persist samples for viewing/editing.
 
 See `record` and `view` for working prototypes of the first two.
+
+`bin/rec.coffee` provides a simple CLI for streaming Leap samples to disk.
