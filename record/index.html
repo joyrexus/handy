@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<script src="lib/d3.v3.js"></script>
+<script src="http://github.com/jashkenas/coffee-script/raw/master/extras/coffee-script.js"></script>
+<style>
+  body {
+    margin: 50px;
+    font-family: "Helvetica Neue", sans-serif;
+    font-weight: 100;
+  }
+  .controls {
+    font-size: 200px;
+    color: rgba(100, 150, 150, 1.0);
+    width: 300px;
+  }
+  .controls:hover {
+    color: rgba(100, 150, 150, 0.5);
+    cursor: pointer; 
+  }
+  .output {
+    font-size: 100px;
+    color: #777;
+    margin: 25px;
+  }
+  #data {
+    font-family: Menlo, monospace;
+    font-size: 15px;
+  }
+</style>
+<body>
+  <div class="controls">
+    <div class="controls" id="record" onclick="record();">record</div>
+    <div class="controls" id="store" onclick="store();">save</div>
+    <div class="controls" id="play" onclick="play();">play</div>
+  </div>
+  <div class="output">
+    <div id="status"></div>
+    <div id="log"></div>
+    <div id="samples"></div>
+    <div id="data"></div>
+  </div>
+
+<script type="text/coffeescript">
+  $ = (id) -> document.getElementById(id)
+
+  db = localStorage
+  ws = null;
+
+  recording = false
+  testing = false
+  data = []
+
+  @init = ->
+    ws = new WebSocket "ws://localhost:6437/"
+
+    ws.onopen = (e) ->
+      $('status').innerHTML = 'socket open'
+
+    ws.onmessage = (e) ->
+      obj = JSON.parse event.data
+      if recording
+        data.push obj
+        $('samples').innerHTML = data.length if data.length % 25 is 0
+    
+    ws.onclose = (e) ->
+      ws = null
+      $('status').innerHTML = 'socket closed'
+      $('log').innerHTML = JSON.stringify e
+
+    ws.onerror = (err) -> alert JSON.parse err
+
+  @record = -> 
+    recording = not recording
+    if recording
+      $('record').style.color = "red"
+    else
+      $('record').style.color = 'rgba(100, 150, 150, 1.0)'
+      $('samples').innerHTML = data.length
+
+  @store = -> 
+    DATA = JSON.stringify data
+    db['data'] = DATA
+    $('data').innerHTML = DATA if testing
+
+  @init()
+</script>
