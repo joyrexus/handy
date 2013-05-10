@@ -19,7 +19,7 @@ Largely inspired by @syntagmatic's [leap-play](https://github.com/syntagmatic/le
 
 ## Projected pieces
 
-- `Recorder` - record, view, and save samples.
+- `Recorder` - record a sample (set of frames).
 
 - `Viewer` - view saved samples in various formats.
 
@@ -31,4 +31,6 @@ Largely inspired by @syntagmatic's [leap-play](https://github.com/syntagmatic/le
 
 See `record` and `view` for working prototypes of the first two.
 
-`bin/rec.coffee` provides a simple CLI for streaming Leap samples to disk.
+`bin/rec.coffee` provides a simple CLI for saving a gesture sample.  It pipes a
+user specified number of frames from the Leap's websocket stream to `stdout` or to a
+user specified filename.
