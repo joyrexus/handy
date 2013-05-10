@@ -33,6 +33,4 @@ Largely inspired by [@syntagmatic](https://github.com/syntagmatic)'s [leap-play]
 
 See `record` and `view` for working prototypes of the first two.
 
-`bin/rec.coffee` provides a simple CLI for saving a gesture sample.  It pipes a
-user specified number of frames from the Leap's websocket stream to `stdout` or to a
-user specified filename.
+`bin/rec.coffee` provides a simple CLI for saving a gesture sample: [gist](https://gist.github.com/joyrexus/5555728).  It pipes a user specified number of frames from the Leap's websocket stream to `stdout` or to a user specified filename.
