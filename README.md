@@ -5,10 +5,12 @@ Our nascent experiments with the [Leap](http://leapmotion.com).
 
 We're utilizing the device's websocket stream and [Javascript API](https://github.com/leapmotion/leapjs).
 
-Largely inspired by @syntagmatic's [leap-play](https://github.com/syntagmatic/leap-play).
+Largely inspired by [@syntagmatic](https://github.com/syntagmatic)'s [leap-play](https://github.com/syntagmatic/leap-play) and [prehensile](https://github.com/syntagmatic/prehensile).
 
 
 ## Resources
+
+* [Open Leap Forum](https://github.com/openleap)
 
 * [Leap JS API Tutorial](https://developer.leapmotion.com/documentation/guide/Sample_JavaScript_Tutorial)
 
