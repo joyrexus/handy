@@ -17,7 +17,6 @@ fs = require 'fs'
 
 max = parseInt process.argv[2]
 max or= 100
-console.log max, "<<<<"
 
 file = process.argv[3]
 out = if file then fs.createWriteStream(file) else process.stdout 
