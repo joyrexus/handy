@@ -1,0 +1,16 @@
+{
+  "name": "handy",
+  "version": "0.0.1",
+  "description": "Record and view leap motion samples",
+  "bin": {"handy": "./bin/handy"},
+  "main": "lib/main.js",
+  "dependencies": {
+    "optimist": ">= 0.4.0",
+    "ws": ">= 0.4.25"
+    "d3": ">= 3.1.9",
+  },
+  "repository": "https://github.com/joyrexus/handy.git",
+  "keywords": [ "leapmotion", "gesture", "motion sensor" ],
+  "author": "J. Voigt",
+  "license": "MIT"
+}
