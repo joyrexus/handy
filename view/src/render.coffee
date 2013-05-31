@@ -1,5 +1,7 @@
 $ = (id) -> document.getElementById id
 
+paused = false
+
 render = (err, data) ->
   if err
     alert err.statusText 
@@ -21,21 +23,37 @@ render = (err, data) ->
       .range([canvas.height, 0])
       .domain([0, 400])
 
-    renderPointables = (obj) ->
+    renderPointables = (frame) ->
       ctx.fillStyle = "rgba(245, 245, 245, 0.3)"
       ctx.fillRect 0, 0, canvas.width, canvas.height
       ctx.fillStyle = "#555"
-      if obj.pointables?
-        for p in obj.pointables
+      if frame.pointables?
+        for p in frame.pointables
           pos = p.tipPosition
           ctx.fillRect x(pos[0]), y(pos[1]), 14, 14
 
-    run = ->
-      i = 0 if i is last
-      renderPointables(data[i])
-      i++
-      setTimeout(run, step)
+    renderInfo = (frame) -> 
+      info.innerHTML = frame.timestamp
+
+    idle = ->
+      if paused then setTimeout(idle, step) else run() 
+
+    run = () ->
+      if paused
+        setTimeout(run, step)
+      else
+        i = 0 if i is last
+        frame = data[i]
+        renderPointables(frame)
+        renderInfo(frame)
+        i++
+        setTimeout(run, step)
 
     run()
+
+
+window.pause = ->
+  paused = not paused
+
 
 window.load = (file) -> d3.json file, render
