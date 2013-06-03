@@ -3,9 +3,42 @@
 <script src="lib/d3.v3.js"></script>
 <script src="lib/render.js"></script>
 <script>load("data/temp.json");</script>
-<style>body {background:rgba(245,245,245,1)}</style>
+<style>
+  body {
+    background:rgba(245,245,245,1);
+    font-family: "Helvetica Neue", sans-serif;
+    font-weight: 100;
+  }
+  .controls {
+    font-size: 100px;
+    color: rgba(100, 150, 150, 1.0);
+    margin: 25px;
+  }
+  .controls li {
+    display: inline;
+  }
+  .control:hover {
+    color: rgba(100, 150, 150, 0.5);
+    cursor: pointer;
+  }
+  .output {
+    font-size: 50px;
+    color: #777;
+    margin: 25px;
+  }
+  #data {
+    font-family: Menlo, monospace;
+    font-size: 15px;
+  }
+</style>
 <body>
+  <ul class="controls">
+    <li class="control" id="back" onclick="back();">⋖</li>
+    <li class="control" id="pause" onclick="pause();">⊗</li>
+    <li class="control" id="skip" onclick="skip();">⋗</li>
+  </li>
+  <div class="output">
+    <div id="info"></div>
+  </div>
   <canvas id="viz"></canvas>
-  <input type="button" value="pause" onclick="pause();">
-  <div id="info"></div>
 

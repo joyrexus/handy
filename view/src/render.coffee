@@ -1,6 +1,7 @@
 $ = (id) -> document.getElementById id
 
-paused = false
+paused = false  # pause/play status
+i = 0           # index of current frame
 
 render = (err, data) ->
   if err
@@ -8,7 +9,6 @@ render = (err, data) ->
   else
     window.data = data
     last = data.length - 1
-    i = 0
     duration = (data[last].timestamp - data[0].timestamp) / 1000
     step = duration / data.length
 
@@ -54,6 +54,12 @@ render = (err, data) ->
 
 window.pause = ->
   paused = not paused
+  $('pause').textContent = if paused then '⊕' else '⊗'
 
+window.back = ->
+  i = if i > 0 then i - 30 else 0
+
+window.skip = ->
+  i = if (i + 30) < last then i + 30 else 0
 
 window.load = (file) -> d3.json file, render
