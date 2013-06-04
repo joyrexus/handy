@@ -33,7 +33,8 @@ render = (err, data) ->
           ctx.fillRect x(pos[0]), y(pos[1]), 14, 14
 
     renderInfo = (frame) -> 
-      info.innerHTML = frame.timestamp
+      stamp.innerHTML = frame.timestamp
+      hands.innerHTML = rame.hands?[0].palmPosition[1]
 
     idle = ->
       if paused then setTimeout(idle, step) else run() 
@@ -45,7 +46,7 @@ render = (err, data) ->
         i = 0 if i is last
         frame = data[i]
         renderPointables(frame)
-        renderInfo(frame)
+        # renderInfo(frame)
         i++
         setTimeout(run, step)
 

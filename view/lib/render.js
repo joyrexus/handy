@@ -44,7 +44,10 @@
         }
       };
       renderInfo = function(frame) {
-        return info.innerHTML = frame.timestamp;
+        var _ref;
+
+        stamp.innerHTML = frame.timestamp;
+        return hands.innerHTML = (_ref = rame.hands) != null ? _ref[0].palmPosition[1] : void 0;
       };
       idle = function() {
         if (paused) {
@@ -64,7 +67,6 @@
           }
           frame = data[i];
           renderPointables(frame);
-          renderInfo(frame);
           i++;
           return setTimeout(run, step);
         }
