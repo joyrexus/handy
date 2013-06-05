@@ -12,7 +12,9 @@ Largely inspired by [@syntagmatic](https://github.com/syntagmatic)'s [leap-play]
 
 * [Open Leap Forum](https://github.com/openleap)
 
-* [Leap JS API Tutorial](https://developer.leapmotion.com/documentation/guide/Sample_JavaScript_Tutorial)
+* [Leap JS Tutorial](https://developer.leapmotion.com/documentation/guide/Sample_JavaScript_Tutorial)
+
+* [Leap JS Examples](http://leapmotion.github.io/leapjs/examples/)
 
 * [Leap API](https://developer.leapmotion.com/documentation/api/annotated)
 
