@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <script src="lib/d3.v3.js"></script>
 <script src="lib/render.js"></script>
-<script>load("data/sample.json");</script>
+<script>load("data/transfer.json");</script>
 <style>
   body {
     background:rgba(245,245,245,1);
@@ -32,6 +32,7 @@
   }
 </style>
 <body>
+  <canvas id="viz"></canvas>
   <ul class="controls">
     <li class="control" id="back" onclick="back();">⋖</li>
     <li class="control" id="pause" onclick="pause();">⊗</li>
@@ -41,5 +42,4 @@
     <div id="stamp"></div>
     <div id="hands"></div>
   </div>
-  <canvas id="viz"></canvas>
 

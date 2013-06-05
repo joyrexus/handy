@@ -21,33 +21,44 @@
       duration = (data[last].timestamp - data[0].timestamp) / 1000;
       step = duration / data.length;
       canvas = $('viz');
-      canvas.width = 800;
-      canvas.height = 800;
+      canvas.width = 500;
+      canvas.height = 500;
       ctx = canvas.getContext("2d");
       x = d3.scale.linear().range([0, canvas.width]).domain([-200, 200]);
       y = d3.scale.linear().range([canvas.height, 0]).domain([0, 400]);
       renderPointables = function(frame) {
-        var p, pos, _i, _len, _ref, _results;
+        var h, p, pos, _i, _j, _len, _len1, _ref, _ref1, _results;
 
         ctx.fillStyle = "rgba(245, 245, 245, 0.3)";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = "#555";
         if (frame.pointables != null) {
           _ref = frame.pointables;
-          _results = [];
           for (_i = 0, _len = _ref.length; _i < _len; _i++) {
             p = _ref[_i];
             pos = p.tipPosition;
-            _results.push(ctx.fillRect(x(pos[0]), y(pos[1]), 14, 14));
+            ctx.fillRect(x(pos[0]), y(pos[1]), 20, 20);
+          }
+        }
+        ctx.fillStyle = "#777";
+        if (frame.hands != null) {
+          _ref1 = frame.hands;
+          _results = [];
+          for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+            h = _ref1[_j];
+            pos = h.palmPosition;
+            ctx.fillRect(x(pos[0]), y(pos[1]), 40, 40);
+            ctx.fillStyle = "steelblue";
+            _results.push(ctx.fillRect(10, y(pos[1]), 40, 40));
           }
           return _results;
         }
       };
       renderInfo = function(frame) {
-        var _ref;
+        var _ref, _ref1;
 
         stamp.innerHTML = frame.timestamp;
-        return hands.innerHTML = (_ref = rame.hands) != null ? _ref[0].palmPosition[1] : void 0;
+        return hands.innerHTML = JSON.stringify((_ref = frame.hands) != null ? (_ref1 = _ref[0]) != null ? _ref1.palmPosition[1] : void 0 : void 0);
       };
       idle = function() {
         if (paused) {
@@ -67,6 +78,7 @@
           }
           frame = data[i];
           renderPointables(frame);
+          renderInfo(frame);
           i++;
           return setTimeout(run, step);
         }
