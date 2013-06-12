@@ -14,11 +14,16 @@ Largely inspired by [@syntagmatic](https://github.com/syntagmatic)'s [leap-play]
 
 * [Leap JS Tutorial](https://developer.leapmotion.com/documentation/guide/Sample_JavaScript_Tutorial)
 
-* [Leap JS Examples](http://leapmotion.github.io/leapjs/examples/)
-
 * [Leap API](https://developer.leapmotion.com/documentation/api/annotated)
 
 * [D3 API](https://github.com/mbostock/d3/wiki/API-Reference)
+
+
+## Examples
+
+* [Leap JS Examples](http://leapmotion.github.io/leapjs/examples/)
+
+* [Sandbox](https://github.com/joyrexus/sandbox/tree/master/leap)
 
 
 ## Projected pieces
