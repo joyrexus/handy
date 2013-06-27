@@ -1,0 +1,15 @@
+#!/usr/bin/env node 
+/*
+handy - record and view motion capture samples.
+
+USAGE
+
+  soundclip [--time SECS] [FILE]
+
+*/
+(function() {
+  var path;
+  path = require('path');
+  require("" + (path.dirname(__filename)) + "/../lib/audio").run();
+}).call(this);
+

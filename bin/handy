@@ -4,12 +4,13 @@ handy - record and view motion capture samples.
 
 USAGE
 
-  handy --record NUMBER_OF_FRAMES [FILENAME]
-  handy FILENAME
+  handy [--audio] [--time SECS] [FILE]
+        [-a]      [-t]
 
-  handy -r 1000                # stream 1000 frames to stdout 
-  handy -r 1000 sample.json    # stream 1000 frames to sample.json
-  handy sample.json            # view sample.json
+  handy --time 5                    # stream frames to stdout for 5 seconds
+  handy -t 5 sample                 # stream frames to sample.json for 5 secs
+  handy --audio -t 5 sample         # & record 5 secs of audio to sample.mov
+  handy sample                      # view sample.json
 
 */
 (function() {

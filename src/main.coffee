@@ -11,6 +11,7 @@ USAGE
   handy sample.json            # view sample.json
 
 ###
+audio = require './audio'
 print = console.log
 
 
@@ -68,15 +69,30 @@ run = ->
     
   '''
   argv = require('optimist')
-    .alias('r', 'record')
-    .describe('r', 'Number of frames to record')
+    .alias('a', 'audio')
+    .alias('t', 'time')
+    .describe('t', 'Time in seconds to record')
+    .describe('a', 'Record and save audio track')
     .argv
-  file = argv._[0]
-  if argv.record
-    frames = parseInt argv.record
-    save frames, file
+
+  fps = 42  # frames per second estimate
+
+  handsFile = 'hands.json'
+  audioFile = 'audio.mov'
+
+  if argv._
+    file = argv._[0]
+    handsFile = file + '.json'
+    audioFile = file + '.mov'
+
+  if argv.time
+    secs = argv.time
+    frames = secs * fps
+    if argv.audio
+      audio.record secs, audioFile
+    save frames, handsFile
   else
     view file
 
 
-exports[name] = method for name, method of {run, save, view}
+Handy = module.exports = {run, save, view}
