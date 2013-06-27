@@ -1,4 +1,4 @@
-handy
+Handy
 =====
 
 Our nascent experiments with the [Leap](http://leapmotion.com).
@@ -10,18 +10,22 @@ Largely inspired by [@syntagmatic](https://github.com/syntagmatic)'s [leap-play]
 
 ## Resources
 
-* [Open Leap Forum](https://github.com/openleap)
-
 * [Leap JS Tutorial](https://developer.leapmotion.com/documentation/guide/Sample_JavaScript_Tutorial)
+
+* [Leap JS API](http://leapmotion.github.io/leapjs/)
 
 * [Leap API](https://developer.leapmotion.com/documentation/api/annotated)
 
 * [D3 API](https://github.com/mbostock/d3/wiki/API-Reference)
 
+* [Open Leap Forum](https://github.com/openleap)
+
 
 ## Examples
 
-* [Leap JS Examples](http://leapmotion.github.io/leapjs/examples/)
+* [Demos](http://leapmotion.github.io/leapjs/examples/)
+
+* [Gists](https://gist.github.com/leapjs)
 
 * [Sandbox](https://github.com/joyrexus/sandbox/tree/master/leap)
 
