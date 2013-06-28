@@ -98,4 +98,4 @@ run = ->
     view file
 
 
-Handy = module.exports = {run, save, view}
+module.exports = {run, save, view}
