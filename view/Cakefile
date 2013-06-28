@@ -1,0 +1,12 @@
+{exec} = require 'child_process'
+fs = require 'fs'
+
+report = (err, stdout, stderr) ->
+  throw err if err
+  console.log stdout + stderr if stdout or stderr
+
+task 'build', 'Build javascript files from source', ->
+  exec 'coffee -co lib/ src/', report
+
+task 'deploy', 'Deploy files to web server', ->
+  exec 'make deploy', report

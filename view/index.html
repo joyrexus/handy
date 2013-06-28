@@ -2,7 +2,6 @@
 <meta charset="utf-8">
 <script src="lib/d3.v3.js"></script>
 <script src="lib/render.js"></script>
-<script>load("data/transfer.json");</script>
 <style>
   body {
     background:rgba(245,245,245,1);
@@ -31,13 +30,17 @@
     font-size: 15px;
   }
 </style>
+<script>load("data/test.json");</script>
 <body>
   <canvas id="viz"></canvas>
   <ul class="controls">
     <li class="control" id="back" onclick="back();">⋖</li>
-    <li class="control" id="pause" onclick="pause();">⊗</li>
+    <li class="control" id="play" onclick="play();">⊗</li>
     <li class="control" id="skip" onclick="skip();">⋗</li>
   </li>
+  <div>
+    <audio id="audio" src="data/test.mov" autobuffer autoplay></audio>
+  </div>
   <div class="output">
     <div id="stamp"></div>
     <div id="hands"></div>

@@ -1,6 +1,8 @@
 $ = (id) -> document.getElementById id
 
+sample = ''
 paused = false  # pause/play status
+done = false    # finished playing sample?
 i = 0           # index of current frame
 
 render = (err, data) ->
@@ -43,26 +45,29 @@ render = (err, data) ->
       stamp.innerHTML = frame.timestamp
       hands.innerHTML = JSON.stringify frame.hands?[0]?.palmPosition[1]
 
-    idle = ->
-      if paused then setTimeout(idle, step) else run() 
-
     run = () ->
-      if paused
-        setTimeout(run, step)
+      frame = data[i]
+      renderPointables(frame)
+      renderInfo(frame)
+      if i == last
+        done = true
+        $('play').textContent = '⊕'
       else
-        i = 0 if i is last
-        frame = data[i]
-        renderPointables(frame)
-        renderInfo(frame)
         i++
         setTimeout(run, step)
 
     run()
 
-
-window.pause = ->
-  paused = not paused
-  $('pause').textContent = if paused then '⊕' else '⊗'
+window.play = ->
+  if done
+    done = false
+    i = 0   # reset frame index
+    $('play').textContent = '⊗'
+    audio = $('audio')
+    audio.load() if window.chrome
+    audio.play()
+    $('audio').play()
+    d3.json sample, render
 
 window.back = ->
   i = if i > 0 then i - 30 else 0
@@ -70,4 +75,6 @@ window.back = ->
 window.skip = ->
   i = if (i + 30) < last then i + 30 else 0
 
-window.load = (file) -> d3.json file, render
+window.load = (file) -> 
+  sample = file
+  d3.json sample, render

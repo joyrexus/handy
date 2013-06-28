@@ -11,6 +11,7 @@ USAGE
   handy sample.json            # view sample.json
 
 ###
+time = require './time'
 audio = require './audio'
 print = console.log
 
@@ -39,6 +40,7 @@ save = (frames, file) ->
       print ' leap socket closed'
       print " #{ws.bytesReceived} bytes received"
       print " #{max} frames written to #{file}"
+      time.info file
       print reason if reason
 
   ws.on 'error', (err) -> print err
@@ -60,7 +62,8 @@ view = (file) ->
   if not file
     print 'Please specify a sample file to view'
   else
-    print "Viewing #{file}"
+    print "Timing info for #{file}:"
+    time.info file
 
 
 run = ->
@@ -75,7 +78,7 @@ run = ->
     .describe('a', 'Record and save audio track')
     .argv
 
-  fps = 42  # frames per second estimate
+  fps = 90  # frames per second estimate
 
   handsFile = 'hands.json'
   audioFile = 'audio.mov'

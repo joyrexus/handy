@@ -7,8 +7,8 @@
   "dependencies": {
     "optimist": ">= 0.4.0",
     "applescript": ">= 0.2.1",
-    "ws": ">= 0.4.25"
-    "d3": ">= 3.1.9",
+    "ws": ">= 0.4.25",
+    "d3": ">= 3.1.9"
   },
   "repository": "https://github.com/joyrexus/handy.git",
   "keywords": [ "leapmotion", "gesture", "motion sensor" ],
