@@ -11,9 +11,15 @@ USAGE
   handy sample.json            # view sample.json
 
 ###
+fs = require 'fs'
+path = require 'path'
 time = require './time'
 audio = require './audio'
+minty = require './minty'
+{open} = require './util'
+
 print = console.log
+data = {} # passed to template for interpolation
 
 
 save = (frames, file) ->
@@ -23,7 +29,6 @@ save = (frames, file) ->
   '''
   WebSocket = require 'ws'
   ws = new WebSocket 'ws://localhost:6437'
-  fs = require 'fs'
 
   out = if file then fs.createWriteStream(file) else process.stdout 
   max = parseInt frames   # num of frames to save
@@ -66,6 +71,17 @@ view = (file) ->
     time.info file
 
 
+serve = (page) ->
+  http = require 'http'
+  server = http.createServer (req, res) ->
+    res.writeHead 200,
+      'Content-Type':  'text/html'
+      'Content-Length': page.length
+    res.end page
+  server.listen 8080, -> (setTimeout (-> server.close()), 5000)
+  open "http://localhost:8080"
+
+
 run = ->
   '''
   Run as a command-line script.
@@ -74,19 +90,24 @@ run = ->
   argv = require('optimist')
     .alias('a', 'audio')
     .alias('t', 'time')
+    .alias('v', 'view')
     .describe('t', 'Time in seconds to record')
     .describe('a', 'Record and save audio track')
+    .describe('v', 'View recorded sample in a web browser')
     .argv
 
   fps = 90  # frames per second estimate
+  secs = 5  # default delay time
 
-  handsFile = 'hands.json'
-  audioFile = 'audio.mov'
+  handsFile = 'sample.json'
+  audioFile = 'sample.mov'
+  viewFile = 'sample.html'
 
   if argv._
     file = argv._[0]
     handsFile = file + '.json'
     audioFile = file + '.mov'
+    viewFile  = file + '.html'
 
   if argv.time
     secs = argv.time
@@ -96,6 +117,19 @@ run = ->
     save frames, handsFile
   else
     view file
+
+  if argv.view  # create web page for viewing the resulting sample
+    data = 
+      file:
+        leap: path.basename handsFile
+        audio: path.basename audioFile
+      script:
+        view: fs.readFileSync __dirname + '/../template/view.js', 'utf8'
+    viewPage = minty.renderFile __dirname + '/../template/view.cst', data
+    fs.writeFile viewFile, viewPage, (err) -> 
+      print err if err
+      print "Created #{viewFile} for viewing sample"
+      # setTimeout (-> serve viewPage), secs * 1000
 
 
 module.exports = {run, save, view}

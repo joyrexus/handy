@@ -1,9 +1,6 @@
 applescript = require 'applescript'
-exec = require('child_process').exec
+{move} = require './util'
 print = console.log 
-
-move = (source, target, err_handler) ->
-  exec "mv #{source} #{target}", (err) -> err_handler err
 
 record = (secs=5, file) ->
 
@@ -19,6 +16,9 @@ record = (secs=5, file) ->
       end tell
       save
       close every window saving no
+    end tell
+    tell application "Terminal"
+      activate
     end tell
     """
 
