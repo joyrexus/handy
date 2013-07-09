@@ -1,16 +1,3 @@
-###
-handy - record and view motion capture samples.
-
-USAGE
-
-  handy --record NUMBER_OF_FRAMES [FILENAME]
-  handy FILENAME
-
-  handy -r 1000                # stream 1000 frames to stdout 
-  handy -r 1000 sample.json    # stream 1000 frames to sample.json
-  handy sample.json            # view sample.json
-
-###
 fs = require 'fs'
 path = require 'path'
 time = require './time'
