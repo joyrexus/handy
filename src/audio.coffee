@@ -27,7 +27,7 @@ record = (secs=5, file) ->
       print "error!" 
     else 
       print r if r
-      move '~/Movies/Audio*Recording.mov', file, (err) ->
+      move '~/Movies/Audio*Recording.*', file, (err) ->
         if err
           print err
         else
