@@ -75,9 +75,10 @@ run = ->
     
   '''
   argv = require('optimist')
-    .alias('a', 'audio')
     .alias('t', 'time')
+    .alias('a', 'audio')
     .alias('v', 'view')
+    .boolean(['a', 'v'])
     .describe('t', 'Time in seconds to record')
     .describe('a', 'Record and save audio track')
     .describe('v', 'View recorded sample in a web browser')
