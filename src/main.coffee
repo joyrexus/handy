@@ -59,14 +59,12 @@ view = (file) ->
 
 
 serve = (page) ->
-  http = require 'http'
-  server = http.createServer (req, res) ->
-    res.writeHead 200,
-      'Content-Type':  'text/html'
-      'Content-Length': page.length
-    res.end page
+  ns = require 'node-static'
+  file = new ns.Server path.dirname page
+  server = require('http').createServer (req, res) ->
+    req.addListener('end', -> file.serve(req, res)).resume()
   server.listen 8080, -> (setTimeout (-> server.close()), 5000)
-  open "http://localhost:8080"
+  open "http://localhost:8080/#{path.basename page}"
 
 
 run = ->
@@ -115,9 +113,11 @@ run = ->
         view: fs.readFileSync __dirname + '/../template/view.js', 'utf8'
     viewPage = minty.renderFile __dirname + '/../template/view.cst', data
     fs.writeFile viewFile, viewPage, (err) -> 
-      print err if err
-      print "Created #{viewFile} for viewing sample"
-      # setTimeout (-> serve viewPage), secs * 1000
+      if err
+        print err 
+      else
+        print "Created #{viewFile} for viewing sample"
+        # setTimeout (-> serve viewFile), secs * 2000
 
 
 module.exports = {run, save, view}
