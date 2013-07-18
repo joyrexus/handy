@@ -1,5 +1,4 @@
 {exec} = require 'child_process'
-fs = require 'fs'
 
 task 'build', 'Build javascript files from source', ->
   report = (err, stdout, stderr) ->
