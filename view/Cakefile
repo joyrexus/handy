@@ -1,5 +1,4 @@
 {exec} = require 'child_process'
-fs = require 'fs'
 
 report = (err, stdout, stderr) ->
   throw err if err

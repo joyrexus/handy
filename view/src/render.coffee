@@ -58,6 +58,10 @@ render = (err, data) ->
 
     run()
 
+window.load = (file) -> 
+  sample = file
+  d3.json sample, render
+
 window.play = ->
   if done
     done = false
@@ -74,7 +78,3 @@ window.back = ->
 
 window.skip = ->
   i = if (i + 30) < last then i + 30 else 0
-
-window.load = (file) -> 
-  sample = file
-  d3.json sample, render
