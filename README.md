@@ -10,9 +10,12 @@ Largely inspired by [@syntagmatic](https://github.com/syntagmatic)'s [leap-play]
 
 ## Resources
 
-* [Leap JS Tutorial](https://developer.leapmotion.com/documentation/guide/Sample_JavaScript_Tutorial)
+* [Leap JS](http://js.leapmotion.com/)
 
-* [Leap JS API](http://leapmotion.github.io/leapjs/)
+  * [API](https://developer.leapmotion.com/documentation/Languages/JavaScript/API/index.html)
+  * [Overview](https://developer.leapmotion.com/documentation/Languages/JavaScript/Guides/Leap_Overview.html)
+  * [Tutorial](https://developer.leapmotion.com/documentation/guide/Sample_JavaScript_Tutorial)
+  * [Reference](http://leapmotion.github.io/leapjs/)
 
 * [Leap API](https://developer.leapmotion.com/documentation/api/annotated)
 
