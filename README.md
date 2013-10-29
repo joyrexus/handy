@@ -1,33 +1,18 @@
 # Handy
 
-Provides a simple CLI for recording and viewing a gesture sample with the [Leap](http://leapmotion.com) device.  
+Provides a simple CLI for recording and viewing a gesture sample with the [Leap](http://leapmotion.com) device.  It enables you to capture a gesture sample (with optional audio) and generate a web page with the sample embedded.  
 
-This [gist](https://gist.github.com/joyrexus/5555728) demonstrates how to
-connect to the device's [websocket stream](https://gist.github.com/joyrexus/7217032).  It pipes a user specified number of frames from the Leap's websocket stream to `stdout` or to a user specified filename.
+The following would create a 10 second gesture sample (`SAMPLE.json`) along with accompanying audio file (`SAMPLE.mov`) and web page for viewing/listening to both (`SAMPLE.html`):
 
-
-## Resources
-
-* [Leap WebSocket Overview](https://gist.github.com/joyrexus/7217032)
-
-* [Leap JS](http://js.leapmotion.com/)
-
-  * [Overview](https://developer.leapmotion.com/documentation/Languages/JavaScript/Guides/Leap_Overview.html)
-  * [Tutorial](https://developer.leapmotion.com/documentation/guide/Sample_JavaScript_Tutorial)
-  * [Reference](http://leapmotion.github.io/leapjs/)
-  * [Demos](http://leapmotion.github.io/leapjs/examples/)
-  * [Gists](https://gist.github.com/leapjs)
-  * [API](https://developer.leapmotion.com/documentation/Languages/JavaScript/API/index.html)
-
-* [Leap API](https://developer.leapmotion.com/documentation/api/annotated)
-
-* [D3 API](https://github.com/mbostock/d3/wiki/API-Reference)
-
-* [Examples](https://github.com/joyrexus/sandbox/tree/master/leap)
-
-* [Open Leap Forum](https://github.com/openleap)
+  handy --time 10 --audio --view SAMPLE
 
 
-## Inspiration
+# Notes
 
-This project was largely inspired by [@syntagmatic](https://github.com/syntagmatic)'s [leap-play](https://github.com/syntagmatic/leap-play) and [prehensile](https://github.com/syntagmatic/prehensile).
+**Handy** utilizes the Leap's [websocket stream](https://gist.github.com/joyrexus/7217032).  
+
+This [gist](https://gist.github.com/joyrexus/5555728) demonstrates how to connect to the device's websocket server.  (Like **Handy**, it pipes a user specified number of frames from the websocket stream to `stdout` or to a user specified filename.)
+
+See our [notes](https://github.com/joyrexus/notes/blob/master/leap/index.md) for an overview of the device, links to related projects, and useful development references.
+
+We're currently developing [custom rendering tools](https://github.com/joyrexus/leap) (deployed [here](http://joyrexus.github.io/sandbox/leap/viewer/) to visualize particular aspects of the gesture samples we're capturing.
