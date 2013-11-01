@@ -15,4 +15,4 @@ This [gist](https://gist.github.com/joyrexus/5555728) demonstrates how to connec
 
 See our [notes](https://github.com/joyrexus/notes/blob/master/leap/index.md) for an overview of the device, links to related projects, and useful development references.
 
-We're currently developing [custom rendering tools](https://github.com/joyrexus/leap) (deployed [here](http://joyrexus.github.io/sandbox/leap/viewer/) to visualize particular aspects of the gesture samples we're capturing.
+We're currently developing [custom rendering tools](https://github.com/joyrexus/leap) (deployed [here](http://joyrexus.github.io/sandbox/leap/viewer/)) to visualize particular aspects of the gesture samples we're capturing.
